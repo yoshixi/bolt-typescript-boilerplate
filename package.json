@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc -p .",
     "build:watch": "tsc -w -p .",
-    "start": "npm run build && node dist/app.js"
+    "start": "npm run build && node dist/app.js",
+    "lint": "deno lint -c deno.jsonc && deno fmt -c deno.jsonc"
   },
   "author": "",
   "license": "ISC",
