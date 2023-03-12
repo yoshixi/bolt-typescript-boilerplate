@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-internal-modules */
 import './utils/env';
-import { App, LogLevel, ExpressReceiver } from '@slack/bolt';
+import { App, ExpressReceiver, LogLevel } from '@slack/bolt';
 import { isGenericMessageEvent } from './utils/helper';
 
-const receiver = new ExpressReceiver({ signingSecret: process.env['SLACK_SIGNING_SECRET'] as string });
+const receiver = new ExpressReceiver({
+  signingSecret: process.env['SLACK_SIGNING_SECRET'] as string,
+});
 
 // @ts-ignore
 const app = new App({
@@ -63,7 +65,7 @@ app.action('button_click', async ({ body, ack, say }) => {
 
 (async () => {
   // Start your app
-  const port = Number(process.env['PORT']) || 8080
+  const port = Number(process.env['PORT']) || 8080;
   await app.start(port);
 
   console.log(`⚡️ Bolt app is running on port ${port}!`);
