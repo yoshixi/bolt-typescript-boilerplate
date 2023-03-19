@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@tsconfig/strictest": "1.0.1",
+    "@tsconfig/strictest": "1.0.2",
     "@types/node": "18.14.4",
     "ts-node": "10.9.1",
     "typescript": "5.0.2"
