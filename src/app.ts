@@ -14,20 +14,18 @@ const app = new App({
   signingSecret: process.env['SLACK_SIGNING_SECRET'],
   receiver,
   logLevel: LogLevel.DEBUG,
+  customRoutes: [{
+    path: '/ping',
+    method: ['GET'],
+    handler: (_req, res) => {
+      res.writeHead(200);
+      res.end('yay!');
+    },
+  }],
 });
 
 app.use(async ({ next }) => {
   await next!();
-});
-
-receiver.router.get('/ping', (_req, res) => {
-  // You're working with an express req and res now.
-  res.send('yay!');
-});
-
-receiver.router.get('/', (_req, res) => {
-  // You're working with an express req and res now.
-  res.send('yay!');
 });
 
 // Listens to incoming messages that contain "hello"
@@ -55,6 +53,10 @@ app.message('hello', async ({ message, say }) => {
     ],
     text: `Hey there <@${message.type}>!`,
   });
+});
+
+app.event('app_mention', async ({ event, say }) => {
+  await say(`Hey there <@${event.user}>!`);
 });
 
 app.action('button_click', async ({ body, ack, say }) => {
