@@ -49,11 +49,11 @@ Run the deploy command.
 
 ```sh
 gcloud builds submit --config cloudbuild.yaml \
+      --substitutions=_SLACK_BOT_TOKEN="xoxb-....." \
+      --substitutions=_SLACK_SIGNING_SECRET="99712..." \
       --substitutions=_ARTIFACT_REGISTRY_REPO="cloud-run-source-deploy" \
       --substitutions=_IMAGE_NAME="bolt-typescript-boilerplate" \
-      --substitutions=_SERVICE_NAME="bolt-typescript-boilerplat" \
-      --substitutions=_SLACK_BOT_TOKEN="xoxb-....." \
-      --substitutions=_SLACK_SIGNING_SECRET="99712..."
+      --substitutions=_SERVICE_NAME="bolt-typescript-boilerplate"
 ```
 
 ## Troubleshooting
