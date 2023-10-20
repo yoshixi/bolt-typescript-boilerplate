@@ -1,5 +1,5 @@
 # build stage install dependencies including devDependencies and build the app.
-FROM node:19-slim as build
+FROM node:21-slim as build
 
 WORKDIR /usr/src/app
 
@@ -12,7 +12,7 @@ COPY . ./
 RUN npm run build
 
 # Run the web service on container startup
-FROM node:19-alpine
+FROM node:21-alpine
 
 WORKDIR /usr/src/app
 
